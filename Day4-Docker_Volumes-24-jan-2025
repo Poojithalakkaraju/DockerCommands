@@ -406,5 +406,65 @@ exit
 [root@ip-172-31-89-231 _data]# ll
 total 0
 =======================================================================
-
+HOST to Container 
 =======================================================================
+[root@ip-172-31-89-231 ~]# mkdir mycode
+[root@ip-172-31-89-231 ~]# touch python{1..5}
+[root@ip-172-31-89-231 ~]# ll
+total 0
+drwxr-xr-x 2 root root 6 Feb  8 17:21 mycode
+-rw-r--r-- 1 root root 0 Feb  8 17:21 python1
+-rw-r--r-- 1 root root 0 Feb  8 17:21 python2
+-rw-r--r-- 1 root root 0 Feb  8 17:21 python3
+-rw-r--r-- 1 root root 0 Feb  8 17:21 python4
+-rw-r--r-- 1 root root 0 Feb  8 17:21 python5
+[root@ip-172-31-89-231 ~]# cd mycode
+[root@ip-172-31-89-231 mycode]# ll
+total 0
+[root@ip-172-31-89-231 mycode]# touch java{1..5}
+[root@ip-172-31-89-231 mycode]# ll
+total 0
+-rw-r--r-- 1 root root 0 Feb  8 17:22 java1
+-rw-r--r-- 1 root root 0 Feb  8 17:22 java2
+-rw-r--r-- 1 root root 0 Feb  8 17:22 java3
+-rw-r--r-- 1 root root 0 Feb  8 17:22 java4
+-rw-r--r-- 1 root root 0 Feb  8 17:22 java5
+[root@ip-172-31-89-231 mycode]# docker run -itd --name contain -v "$(pwd)":/arun ubuntu
+ab51ccea9bd8e387a5fe986f022cdfeec634dca3eb8e339bc016a6b6a07dc0a5
+[root@ip-172-31-89-231 mycode]# docker volume ls
+DRIVER    VOLUME NAME
+local     a9015ebd4133b7657b53dd09cc9e6512f283fed85af624eeb9eac7849f1a4b3b
+local     appdata
+local     balu
+local     meena
+local     pooja
+[root@ip-172-31-89-231 mycode]# docker exec -it cont1 bash
+Error response from daemon: No such container: cont1
+[root@ip-172-31-89-231 mycode]# docker exec -it contain bash
+root@ab51ccea9bd8:/# ll
+total 0
+drwxr-xr-x   1 root root  18 Feb  8 17:25 ./
+drwxr-xr-x   1 root root  18 Feb  8 17:25 ../
+-rwxr-xr-x   1 root root   0 Feb  8 17:25 .dockerenv*
+drwxr-xr-x   2 root root  88 Feb  8 17:22 arun/
+lrwxrwxrwx   1 root root   7 Apr 22  2024 bin -> usr/bin/
+drwxr-xr-x   2 root root   6 Apr 22  2024 boot/
+drwxr-xr-x   5 root root 360 Feb  8 17:25 dev/
+drwxr-xr-x   1 root root  66 Feb  8 17:25 etc/
+drwxr-xr-x   3 root root  20 Jan 27 02:09 home/
+lrwxrwxrwx   1 root root   7 Apr 22  2024 lib -> usr/lib/
+lrwxrwxrwx   1 root root   9 Apr 22  2024 lib64 -> usr/lib64/
+drwxr-xr-x   2 root root   6 Jan 27 02:03 media/
+drwxr-xr-x   2 root root   6 Jan 27 02:03 mnt/
+drwxr-xr-x   2 root root   6 Jan 27 02:03 opt/
+dr-xr-xr-x 163 root root   0 Feb  8 17:25 proc/
+drwx------   2 root root  37 Jan 27 02:09 root/
+drwxr-xr-x   4 root root  33 Jan 27 02:09 run/
+lrwxrwxrwx   1 root root   8 Apr 22  2024 sbin -> usr/sbin/
+drwxr-xr-x   2 root root   6 Jan 27 02:03 srv/
+dr-xr-xr-x  13 root root   0 Feb  8 16:53 sys/
+drwxrwxrwt   2 root root   6 Jan 27 02:09 tmp/
+drwxr-xr-x  12 root root 133 Jan 27 02:03 usr/
+drwxr-xr-x  11 root root 139 Jan 27 02:09 var/
+root@ab51ccea9bd8:/# exit
+exit
