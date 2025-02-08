@@ -278,5 +278,133 @@ sony
 [root@ip-172-31-89-231 ~]# docker volume ls
 DRIVER    VOLUME NAME
 local     appdata
-[root@ip-172-31-89-231 ~]# 
-[root@ip-172-31
+[root@ip-172-31-89-231 ~]# docker kill $(docker ps)
+12610507a987
+cont6
+465d1b8629f7
+cont5
+0ab4e837ca56
+cont4
+Error response from daemon: Cannot kill container: CONTAINER: No such container: CONTAINER
+Error response from daemon: Cannot kill container: ID: No such container: ID
+Error response from daemon: Cannot kill container: IMAGE: No such container: IMAGE
+Error response from daemon: Cannot kill container: COMMAND: No such container: COMMAND
+Error response from daemon: Cannot kill container: CREATED: No such container: CREATED
+Error response from daemon: Cannot kill container: STATUS: No such container: STATUS
+Error response from daemon: Cannot kill container: PORTS: No such container: PORTS
+Error response from daemon: Cannot kill container: NAMES: No such container: NAMES
+Error response from daemon: Cannot kill container: ubuntu: No such container: ubuntu
+Error response from daemon: Cannot kill container: "/bin/bash": No such container: "/bin/bash"
+Error response from daemon: Cannot kill container: 19: No such container: 19
+Error response from daemon: Cannot kill container: minutes: No such container: minutes
+Error response from daemon: Cannot kill container: ago: No such container: ago
+Error response from daemon: Cannot kill container: Up: No such container: Up
+Error response from daemon: Cannot kill container: 19: No such container: 19
+Error response from daemon: Cannot kill container: minutes: No such container: minutes
+Error response from daemon: Cannot kill container: ubuntu: No such container: ubuntu
+Error response from daemon: Cannot kill container: "/bin/bash": No such container: "/bin/bash"
+Error response from daemon: Cannot kill container: 50: No such container: 50
+Error response from daemon: Cannot kill container: minutes: No such container: minutes
+Error response from daemon: Cannot kill container: ago: No such container: ago
+Error response from daemon: Cannot kill container: Up: No such container: Up
+Error response from daemon: Cannot kill container: 50: No such container: 50
+Error response from daemon: Cannot kill container: minutes: No such container: minutes
+Error response from daemon: Cannot kill container: ubuntu: No such container: ubuntu
+Error response from daemon: Cannot kill container: "/bin/bash": No such container: "/bin/bash"
+Error response from daemon: Cannot kill container: About: No such container: About
+Error response from daemon: Cannot kill container: an: No such container: an
+Error response from daemon: Cannot kill container: hour: No such container: hour
+Error response from daemon: Cannot kill container: ago: No such container: ago
+Error response from daemon: Cannot kill container: Up: No such container: Up
+Error response from daemon: Cannot kill container: About: No such container: About
+Error response from daemon: Cannot kill container: an: No such container: an
+Error response from daemon: Cannot kill container: hour: No such container: hour
+[root@ip-172-31-89-231 ~]# docker ps -a
+CONTAINER ID   IMAGE     COMMAND       CREATED             STATUS                        PORTS     NAMES
+12610507a987   ubuntu    "/bin/bash"   20 minutes ago      Exited (137) 16 seconds ago             cont6
+465d1b8629f7   ubuntu    "/bin/bash"   51 minutes ago      Exited (137) 16 seconds ago             cont5
+0ab4e837ca56   ubuntu    "/bin/bash"   About an hour ago   Exited (137) 16 seconds ago             cont4
+14d5ba34c521   ubuntu    "/bin/bash"   2 hours ago         Exited (137) 2 hours ago                cont1
+[root@ip-172-31-89-231 ~]# docker container prune
+WARNING! This will remove all stopped containers.
+Are you sure you want to continue? [y/N] y
+Deleted Containers:
+12610507a987c538f7675549d3baa9727496423ed755201abf3cbc8d1d28430c
+465d1b8629f78d6a7a22510244741ab1b0eb12c3919079a259ca65d44e173028
+0ab4e837ca56c0df12bb477f7b77a826a426fca482d400fd2b27728f1b0f8b0b
+14d5ba34c5219eb91d65324d0328b81c76178dbc88d657eeef7c23b3a967c61e
+
+Total reclaimed space: 284B
+[root@ip-172-31-89-231 ~]# docker ps -a
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+
+
+=======================================================================
+While creating container if we want to create a colume use below steps:
+=======================================================================
+[root@ip-172-31-89-231 ~]# docker run -itd --name cont7 -v /myapplication ubuntu
+c091da96a5907459a7a6685696bc07ac2dc6cbe1c428312d8fbc95ce58761be1
+[root@ip-172-31-89-231 ~]# docker volume ps
+
+Usage:  docker volume COMMAND
+
+Manage volumes
+
+Commands:
+  create      Create a volume
+  inspect     Display detailed information on one or more volumes
+  ls          List volumes
+  prune       Remove unused local volumes
+  rm          Remove one or more volumes
+  update      Update a volume (cluster volumes only)
+
+Run 'docker volume COMMAND --help' for more information on a command.
+[root@ip-172-31-89-231 ~]# docker volume ls
+DRIVER    VOLUME NAME
+local     a9015ebd4133b7657b53dd09cc9e6512f283fed85af624eeb9eac7849f1a4b3b
+local     appdata
+local     balu
+local     meena
+local     pooja
+[root@ip-172-31-89-231 ~]# docker exec -it cont7 bash
+root@c091da96a590:/# ll
+total 0
+drwxr-xr-x   1 root root  27 Feb  8 16:49 ./
+drwxr-xr-x   1 root root  27 Feb  8 16:49 ../
+-rwxr-xr-x   1 root root   0 Feb  8 16:49 .dockerenv*
+lrwxrwxrwx   1 root root   7 Apr 22  2024 bin -> usr/bin/
+drwxr-xr-x   2 root root   6 Apr 22  2024 boot/
+drwxr-xr-x   5 root root 360 Feb  8 16:49 dev/
+drwxr-xr-x   1 root root  66 Feb  8 16:49 etc/
+drwxr-xr-x   3 root root  20 Jan 27 02:09 home/
+lrwxrwxrwx   1 root root   7 Apr 22  2024 lib -> usr/lib/
+lrwxrwxrwx   1 root root   9 Apr 22  2024 lib64 -> usr/lib64/
+drwxr-xr-x   2 root root   6 Jan 27 02:03 media/
+drwxr-xr-x   2 root root   6 Jan 27 02:03 mnt/
+drwxr-xr-x   2 root root   6 Feb  8 16:49 myapplication/
+drwxr-xr-x   2 root root   6 Jan 27 02:03 opt/
+dr-xr-xr-x 163 root root   0 Feb  8 16:49 proc/
+drwx------   2 root root  37 Jan 27 02:09 root/
+drwxr-xr-x   4 root root  33 Jan 27 02:09 run/
+lrwxrwxrwx   1 root root   8 Apr 22  2024 sbin -> usr/sbin/
+drwxr-xr-x   2 root root   6 Jan 27 02:03 srv/
+dr-xr-xr-x  13 root root   0 Feb  8 16:49 sys/
+drwxrwxrwt   2 root root   6 Jan 27 02:09 tmp/
+drwxr-xr-x  12 root root 133 Jan 27 02:03 usr/
+drwxr-xr-x  11 root root 139 Jan 27 02:09 var/
+root@c091da96a590:/# cd myapplication
+root@c091da96a590:/myapplication# l 
+root@c091da96a590:/myapplication# ll
+total 0
+drwxr-xr-x 2 root root  6 Feb  8 16:49 ./
+drwxr-xr-x 1 root root 27 Feb  8 16:49 ../
+root@c091da96a590:/myapplication# exit
+exit
+[root@ip-172-31-89-231 ~]# cd /var/lib/docker/a9015ebd4133b7657b53dd09cc9e6512f283fed85af624eeb9eac7849f1a4b3b/_data
+-bash: cd: /var/lib/docker/a9015ebd4133b7657b53dd09cc9e6512f283fed85af624eeb9eac7849f1a4b3b/_data: No such file or directory
+[root@ip-172-31-89-231 ~]# cd /var/lib/docker/volumes/a9015ebd4133b7657b53dd09cc9e6512f283fed85af624eeb9eac7849f1a4b3b/_data
+[root@ip-172-31-89-231 _data]# ll
+total 0
+=======================================================================
+
+=======================================================================
