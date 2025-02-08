@@ -248,4 +248,35 @@ drwxr-xr-x 1 root root 22 Feb  8 16:16 ../
 -rw-r--r-- 1 root root  0 Feb  8 15:37 file.txt
 -rw-r--r-- 1 root root  0 Feb  8 14:49 index.html
 drwxr-xr-x 2 root root  6 Feb  8 15:51 ubuntuu/
-root@12610507a987:/poojitha# 
+root@12610507a987:/poojitha# exit
+root@12610507a987:/poojitha# exit
+exit
+[root@ip-172-31-89-231 ~]# docker volume create pooja
+pooja
+[root@ip-172-31-89-231 ~]# docker volume ls
+DRIVER    VOLUME NAME
+local     appdata
+local     pooja
+[root@ip-172-31-89-231 ~]# docker volume create sony
+sony
+[root@ip-172-31-89-231 ~]# docker volume create arun
+arun
+[root@ip-172-31-89-231 ~]# docker volume create mahesh
+mahesh
+[root@ip-172-31-89-231 ~]# docker volume ls
+DRIVER    VOLUME NAME
+local     appdata
+local     arun
+local     mahesh
+local     pooja
+local     sony
+[root@ip-172-31-89-231 ~]# docker volume rm arun mahesh pooja sony
+arun
+mahesh
+pooja
+sony
+[root@ip-172-31-89-231 ~]# docker volume ls
+DRIVER    VOLUME NAME
+local     appdata
+[root@ip-172-31-89-231 ~]# 
+[root@ip-172-31
