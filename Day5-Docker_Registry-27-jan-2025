@@ -1,1 +1,188 @@
 
+[ec2-user@ip-172-31-93-183 ~]$ sudo -i
+[root@ip-172-31-93-183 ~]# yum install git -y
+Loaded plugins: extras_suggestions, langpacks, priorities, update-motd
+amzn2-core                                                                                                                                      | 3.6 kB  00:00:00     
+Resolving Dependencies
+--> Running transaction check
+---> Package git.x86_64 0:2.47.1-1.amzn2.0.2 will be installed
+--> Processing Dependency: git-core = 2.47.1-1.amzn2.0.2 for package: git-2.47.1-1.amzn2.0.2.x86_64
+--> Processing Dependency: git-core-doc = 2.47.1-1.amzn2.0.2 for package: git-2.47.1-1.amzn2.0.2.x86_64
+--> Processing Dependency: perl-Git = 2.47.1-1.amzn2.0.2 for package: git-2.47.1-1.amzn2.0.2.x86_64
+--> Processing Dependency: perl(Git) for package: git-2.47.1-1.amzn2.0.2.x86_64
+--> Processing Dependency: perl(Term::ReadKey) for package: git-2.47.1-1.amzn2.0.2.x86_64
+--> Running transaction check
+---> Package git-core.x86_64 0:2.47.1-1.amzn2.0.2 will be installed
+---> Package git-core-doc.noarch 0:2.47.1-1.amzn2.0.2 will be installed
+---> Package perl-Git.noarch 0:2.47.1-1.amzn2.0.2 will be installed
+--> Processing Dependency: perl(Error) for package: perl-Git-2.47.1-1.amzn2.0.2.noarch
+---> Package perl-TermReadKey.x86_64 0:2.30-20.amzn2.0.2 will be installed
+--> Running transaction check
+---> Package perl-Error.noarch 1:0.17020-2.amzn2 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+=======================================================================================================================================================================
+ Package                                    Arch                             Version                                        Repository                            Size
+=======================================================================================================================================================================
+Installing:
+ git                                        x86_64                           2.47.1-1.amzn2.0.2                             amzn2-core                            57 k
+Installing for dependencies:
+ git-core                                   x86_64                           2.47.1-1.amzn2.0.2                             amzn2-core                            11 M
+ git-core-doc                               noarch                           2.47.1-1.amzn2.0.2                             amzn2-core                           3.2 M
+ perl-Error                                 noarch                           1:0.17020-2.amzn2                              amzn2-core                            32 k
+ perl-Git                                   noarch                           2.47.1-1.amzn2.0.2                             amzn2-core                            44 k
+ perl-TermReadKey                           x86_64                           2.30-20.amzn2.0.2                              amzn2-core                            31 k
+
+Transaction Summary
+=======================================================================================================================================================================
+Install  1 Package (+5 Dependent packages)
+
+Total download size: 15 M
+Installed size: 47 M
+Downloading packages:
+(1/6): git-2.47.1-1.amzn2.0.2.x86_64.rpm                                                                                                        |  57 kB  00:00:00     
+(2/6): git-core-doc-2.47.1-1.amzn2.0.2.noarch.rpm                                                                                               | 3.2 MB  00:00:00     
+(3/6): perl-Error-0.17020-2.amzn2.noarch.rpm                                                                                                    |  32 kB  00:00:00     
+(4/6): perl-Git-2.47.1-1.amzn2.0.2.noarch.rpm                                                                                                   |  44 kB  00:00:00     
+(5/6): git-core-2.47.1-1.amzn2.0.2.x86_64.rpm                                                                                                   |  11 MB  00:00:00     
+(6/6): perl-TermReadKey-2.30-20.amzn2.0.2.x86_64.rpm                                                                                            |  31 kB  00:00:00     
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Total                                                                                                                                   45 MB/s |  15 MB  00:00:00     
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Installing : git-core-2.47.1-1.amzn2.0.2.x86_64                                                                                                                  1/6 
+  Installing : git-core-doc-2.47.1-1.amzn2.0.2.noarch                                                                                                              2/6 
+  Installing : 1:perl-Error-0.17020-2.amzn2.noarch                                                                                                                 3/6 
+  Installing : perl-TermReadKey-2.30-20.amzn2.0.2.x86_64                                                                                                           4/6 
+  Installing : perl-Git-2.47.1-1.amzn2.0.2.noarch                                                                                                                  5/6 
+  Installing : git-2.47.1-1.amzn2.0.2.x86_64                                                                                                                       6/6 
+  Verifying  : perl-TermReadKey-2.30-20.amzn2.0.2.x86_64                                                                                                           1/6 
+  Verifying  : perl-Git-2.47.1-1.amzn2.0.2.noarch                                                                                                                  2/6 
+  Verifying  : git-2.47.1-1.amzn2.0.2.x86_64                                                                                                                       3/6 
+  Verifying  : 1:perl-Error-0.17020-2.amzn2.noarch                                                                                                                 4/6 
+  Verifying  : git-core-doc-2.47.1-1.amzn2.0.2.noarch                                                                                                              5/6 
+  Verifying  : git-core-2.47.1-1.amzn2.0.2.x86_64                                                                                                                  6/6 
+
+Installed:
+  git.x86_64 0:2.47.1-1.amzn2.0.2                                                                                                                                      
+
+Dependency Installed:
+  git-core.x86_64 0:2.47.1-1.amzn2.0.2          git-core-doc.noarch 0:2.47.1-1.amzn2.0.2   perl-Error.noarch 1:0.17020-2.amzn2   perl-Git.noarch 0:2.47.1-1.amzn2.0.2  
+  perl-TermReadKey.x86_64 0:2.30-20.amzn2.0.2  
+
+Complete!
+[root@ip-172-31-93-183 ~]# git clone https://github.com/Poojithalakkaraju/static-cycle-website-jenkins-docker-.git
+Cloning into 'static-cycle-website-jenkins-docker-'...
+remote: Enumerating objects: 115, done.
+remote: Counting objects: 100% (115/115), done.
+remote: Compressing objects: 100% (89/89), done.
+remote: Total 115 (delta 41), reused 82 (delta 23), pack-reused 0 (from 0)
+Receiving objects: 100% (115/115), 5.00 MiB | 44.51 MiB/s, done.
+Resolving deltas: 100% (41/41), done.
+[root@ip-172-31-93-183 ~]# git checkout master
+fatal: not a git repository (or any of the parent directories): .git
+[root@ip-172-31-93-183 ~]# ll
+total 0
+drwxr-xr-x 6 root root 198 Feb  9 11:44 static-cycle-website-jenkins-docker-
+drwxr-xr-x 2 root root  24 Feb  9 11:09 zomato
+[root@ip-172-31-93-183 ~]# cd static-cycle-website-jenkins-docker-
+[root@ip-172-31-93-183 static-cycle-website-jenkins-docker-]# ll
+total 104
+-rw-r--r-- 1 root root 11324 Feb  9 11:44 about.html
+-rw-r--r-- 1 root root 11749 Feb  9 11:44 contact.html
+drwxr-xr-x 2 root root  4096 Feb  9 11:44 css
+-rw-r--r-- 1 root root 14403 Feb  9 11:44 cycle.html
+-rw-r--r-- 1 root root    49 Feb  9 11:44 Dockerfile
+drwxr-xr-x 2 root root  4096 Feb  9 11:44 images
+-rw-r--r-- 1 root root 22754 Feb  9 11:44 index.html
+-rw-r--r-- 1 root root  3793 Feb  9 11:44 Jenkinsfile
+drwxr-xr-x 2 root root  4096 Feb  9 11:44 js
+-rw-r--r-- 1 root root 13251 Feb  9 11:44 news.html
+-rw-r--r-- 1 root root    16 Feb  9 11:44 README.md
+[root@ip-172-31-93-183 static-cycle-website-jenkins-docker-]# docker build -d image1 .
+unknown shorthand flag: 'd' in -d
+See 'docker buildx build --help'.
+[root@ip-172-31-93-183 static-cycle-website-jenkins-docker-]# docker build -t image1 .
+[+] Building 2.6s (7/7) FINISHED                                                                                                                        docker:default
+ => [internal] load build definition from Dockerfile                                                                                                              0.1s
+ => => transferring dockerfile: 86B                                                                                                                               0.0s
+ => [internal] load metadata for docker.io/library/httpd:2.4                                                                                                      0.3s
+ => [internal] load .dockerignore                                                                                                                                 0.0s
+ => => transferring context: 2B                                                                                                                                   0.0s
+ => [internal] load build context                                                                                                                                 0.3s
+ => => transferring context: 14.48MB                                                                                                                              0.3s
+ => [1/2] FROM docker.io/library/httpd:2.4@sha256:3195404327ecd95b2fa0a5d4eac1f2206bb12996fb2561393f91254759e422b9                                                1.8s
+ => => resolve docker.io/library/httpd:2.4@sha256:3195404327ecd95b2fa0a5d4eac1f2206bb12996fb2561393f91254759e422b9                                                0.0s
+ => => sha256:830a84f99cc8793eaf058e586e8843e7c15d0a7e963b677dc473ad5c2faab612 145B / 145B                                                                        0.1s
+ => => sha256:6080a836f5de46e70ce7445caab18f762f429399b99180118f6de636e39d9aca 2.10kB / 2.10kB                                                                    0.0s
+ => => sha256:4d98e80840bbc1ef247bde526eda3d8c910a5a4b27aaa187a4c44f916c7e2d0b 7.88kB / 7.88kB                                                                    0.0s
+ => => sha256:4f4fb700ef54461cfa02571ae0db9a0dc1e0cdb5577484a6d75e68dc38e8acc1 32B / 32B                                                                          0.1s
+ => => sha256:a1a1b409f475669a734f5d9eb50e98a1ddfa8be781dde30a608015a8fd73e6d2 4.20MB / 4.20MB                                                                    0.2s
+ => => sha256:3195404327ecd95b2fa0a5d4eac1f2206bb12996fb2561393f91254759e422b9 10.16kB / 10.16kB                                                                  0.0s
+ => => extracting sha256:830a84f99cc8793eaf058e586e8843e7c15d0a7e963b677dc473ad5c2faab612                                                                         0.0s
+ => => sha256:35b1ecb7160883f84bd5845f60c0047d473dcd3127013948f45c17fb900ce5ea 26.06MB / 26.06MB                                                                  0.7s
+ => => sha256:80350326cd932b7438b0e4952c3b7fb7b7f87c3e16310772cfc425fa68a5770e 292B / 292B                                                                        0.2s
+ => => extracting sha256:4f4fb700ef54461cfa02571ae0db9a0dc1e0cdb5577484a6d75e68dc38e8acc1                                                                         0.0s
+ => => extracting sha256:a1a1b409f475669a734f5d9eb50e98a1ddfa8be781dde30a608015a8fd73e6d2                                                                         0.5s
+ => => extracting sha256:35b1ecb7160883f84bd5845f60c0047d473dcd3127013948f45c17fb900ce5ea                                                                         0.9s
+ => => extracting sha256:80350326cd932b7438b0e4952c3b7fb7b7f87c3e16310772cfc425fa68a5770e                                                                         0.0s
+ => [2/2] COPY . /usr/local/apache2/htdocs/                                                                                                                       0.2s
+ => exporting to image                                                                                                                                            0.1s
+ => => exporting layers                                                                                                                                           0.1s
+ => => writing image sha256:075df2b913fa347b3d503be43768fa6c1fcde26b8c7921a08ef7e19f3cf3e610                                                                      0.0s
+ => => naming to docker.io/library/image1                                                                                                                         0.0s
+[root@ip-172-31-93-183 static-cycle-website-jenkins-docker-]# ll
+total 104
+-rw-r--r-- 1 root root 11324 Feb  9 11:44 about.html
+-rw-r--r-- 1 root root 11749 Feb  9 11:44 contact.html
+drwxr-xr-x 2 root root  4096 Feb  9 11:44 css
+-rw-r--r-- 1 root root 14403 Feb  9 11:44 cycle.html
+-rw-r--r-- 1 root root    49 Feb  9 11:44 Dockerfile
+drwxr-xr-x 2 root root  4096 Feb  9 11:44 images
+-rw-r--r-- 1 root root 22754 Feb  9 11:44 index.html
+-rw-r--r-- 1 root root  3793 Feb  9 11:44 Jenkinsfile
+drwxr-xr-x 2 root root  4096 Feb  9 11:44 js
+-rw-r--r-- 1 root root 13251 Feb  9 11:44 news.html
+-rw-r--r-- 1 root root    16 Feb  9 11:44 README.md
+[root@ip-172-31-93-183 static-cycle-website-jenkins-docker-]# docker images
+REPOSITORY   TAG       IMAGE ID       CREATED         SIZE
+image1       latest    075df2b913fa   3 minutes ago   163MB
+nginx        latest    97662d24417b   3 days ago      192MB
+[root@ip-172-31-93-183 static-cycle-website-jenkins-docker-]# docker tag image1 poojithalakkaraju512/myimagesrepo:myfirstimages
+[root@ip-172-31-93-183 static-cycle-website-jenkins-docker-]# docker images
+REPOSITORY                          TAG             IMAGE ID       CREATED          SIZE
+poojithalakkaraju512/myimagesrepo   myfirstimages   075df2b913fa   11 minutes ago   163MB
+image1                              latest          075df2b913fa   11 minutes ago   163MB
+nginx                               latest          97662d24417b   3 days ago       192MB
+[root@ip-172-31-93-183 static-cycle-website-jenkins-docker-]# docker login
+Log in with your Docker ID or email address to push and pull images from Docker Hub. If you don't have a Docker ID, head over to https://hub.docker.com/ to create one.
+You can log in with your password or a Personal Access Token (PAT). Using a limited-scope PAT grants better security and is required for organizations using SSO. Learn more at https://docs.docker.com/go/access-tokens/
+
+Username: poojihtalakkaraju512
+Password: 
+Error response from daemon: Get "https://registry-1.docker.io/v2/": unauthorized: incorrect username or password
+[root@ip-172-31-93-183 static-cycle-website-jenkins-docker-]# docker login
+Log in with your Docker ID or email address to push and pull images from Docker Hub. If you don't have a Docker ID, head over to https://hub.docker.com/ to create one.
+You can log in with your password or a Personal Access Token (PAT). Using a limited-scope PAT grants better security and is required for organizations using SSO. Learn more at https://docs.docker.com/go/access-tokens/
+
+Username: poojithalakkaraju512
+Password: 
+WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+[root@ip-172-31-93-183 static-cycle-website-jenkins-docker-]# docker push poojithalakkaraju512/myimagesrepo:myfirstimages
+The push refers to repository [docker.io/poojithalakkaraju512/myimagesrepo]
+322120462cb2: Pushed 
+e48683950315: Mounted from library/httpd 
+1b533b3f600d: Mounted from library/httpd 
+45d2a6f2a0b1: Mounted from library/httpd 
+5f70bf18a086: Mounted from library/httpd 
+d465f9c6793b: Mounted from library/httpd 
+7914c8f600f5: Mounted from library/httpd 
+myfirstimages: digest: sha256:5429de3914423fccb79a7c7f4598b52d7143ba291f
