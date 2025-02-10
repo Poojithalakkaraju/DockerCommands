@@ -52,3 +52,191 @@ e6b48cdf97b0   host          host      local
 [root@ip-172-31-29-100 ~]# docker run -itd --name app --network app-network ubuntu
 6753d02cae0d3681ffb697069a03df0a62c57542c467e9bb5dc70eae1c49d63f
 [root@ip-172-31-29-100 ~]# docker inspect app
+"Networks": {
+                "app-network": {
+                    "IPAMConfig": null,
+                    "Links": null,
+                    "Aliases": [
+                        "6753d02cae0d"
+                    ],
+                    "MacAddress": "02:42:ac:12:00:02",
+                    "NetworkID": "8051e3ee057ccfc4a35c016fccaba0cf72dfa5cc60a27e1eda03ee4f284b835a",
+                    "EndpointID": "34aafe7159155164ee6dfcf0c1f2dba9e1120c3a566139b55a3c7cd8828a49d3",
+                    "Gateway": "172.18.0.1",
+                    "IPAddress": "172.18.0.2",
+                    "IPPrefixLen": 16,
+                    "IPv6Gateway": "",
+                    "GlobalIPv6Address": "",
+                    "GlobalIPv6PrefixLen": 0,
+                    "DriverOpts": null,
+                    "DNSNames": [
+                        "app",
+                        "6753d02cae0d"
+                    ]
+
+
+
+[root@ip-172-31-29-100 ~]# docker network create db-network
+1c0881488205a428b842afd356d18ec55ea86135ba758d2373b0e97960d8d42b
+[root@ip-172-31-29-100 ~]# docker network ls
+NETWORK ID     NAME          DRIVER    SCOPE
+8051e3ee057c   app-network   bridge    local
+1b1fc84bbd05   bridge        bridge    local
+1c0881488205   db-network    bridge    local
+e6b48cdf97b0   host          host      local
+76d8fcab74fb   none          null      local
+[root@ip-172-31-29-100 ~]# docker run -itd --name db  --network db-network ubuntu
+e4f29a59080035d1c23156a84bf060ecc409030eb91580a819d8325360b687e6
+[root@ip-172-31-29-100 ~]# docker inspect db
+ "MacAddress": "",
+            "Networks": {
+                "db-network": {
+                    "IPAMConfig": null,
+                    "Links": null,
+                    "Aliases": [
+                        "e4f29a590800"
+                    ],
+                    "MacAddress": "02:42:ac:13:00:02",
+                    "NetworkID": "1c0881488205a428b842afd356d18ec55ea86135ba758d2373b0e97960d8d42b",
+                    "EndpointID": "36483f85dd4bb4cd739dbab66c840b42ede169aa085c8845bfb46bdaa0fb187e",
+                    "Gateway": "172.19.0.1",
+                    "IPAddress": "172.19.0.2",
+                    "IPPrefixLen": 16,
+                    "IPv6Gateway": "",
+                    "GlobalIPv6Address": "",
+                    "GlobalIPv6PrefixLen": 0,
+                    "DriverOpts": null,
+                    "DNSNames": [
+                        "db",
+                        "e4f29a590800"
+                    ]
+                }
+========================================================================================
+Now checking whether db-network having connectivity with app-network or not?
+========================================================================================
+
+[root@ip-172-31-29-100 ~]# docker exec -it db bash
+root@e4f29a590800:/# ping
+bash: ping: command not found
+root@e4f29a590800:/# apt update -y
+Get:1 http://archive.ubuntu.com/ubuntu noble InRelease [256 kB]
+Get:2 http://security.ubuntu.com/ubuntu noble-security InRelease [126 kB]
+Get:3 http://security.ubuntu.com/ubuntu noble-security/main amd64 Packages [777 kB]
+Get:4 http://archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB]
+Get:5 http://archive.ubuntu.com/ubuntu noble-backports InRelease [126 kB]
+Get:6 http://archive.ubuntu.com/ubuntu noble/restricted amd64 Packages [117 kB]
+Get:7 http://archive.ubuntu.com/ubuntu noble/main amd64 Packages [1808 kB]      
+Get:8 http://security.ubuntu.com/ubuntu noble-security/multiverse amd64 Packages [15.5 kB]
+Get:9 http://security.ubuntu.com/ubuntu noble-security/restricted amd64 Packages [789 kB]
+Get:10 http://security.ubuntu.com/ubuntu noble-security/universe amd64 Packages [1039 kB]
+Get:11 http://archive.ubuntu.com/ubuntu noble/multiverse amd64 Packages [331 kB]       
+Get:12 http://archive.ubuntu.com/ubuntu noble/universe amd64 Packages [19.3 MB]
+Get:13 http://archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Packages [804 kB]
+Get:14 http://archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 Packages [20.1 kB]
+Get:15 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 Packages [1084 kB]
+Get:16 http://archive.ubuntu.com/ubuntu noble-updates/universe amd64 Packages [1315 kB]
+Get:17 http://archive.ubuntu.com/ubuntu noble-backports/universe amd64 Packages [15.1 kB]
+Fetched 28.1 MB in 3s (8831 kB/s)                          
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+14 packages can be upgraded. Run 'apt list --upgradable' to see them.
+root@e4f29a590800:/# apt install iputils-ping    
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+The following additional packages will be installed:
+  libcap2 libcap2-bin libpam-cap
+The following NEW packages will be installed:
+  iputils-ping libcap2-bin libpam-cap
+The following packages will be upgraded:
+  libcap2
+1 upgraded, 3 newly installed, 0 to remove and 13 not upgraded.
+Need to get 121 kB of archives.
+Progress: [ 94%] [########################################################################################################################################.........] 
+Do you want to continue? [Y/n] Y
+Get:1 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libcap2 amd64 1:2.66-5ubuntu2.1 [30.1 kB]
+Get:2 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libcap2-bin amd64 1:2.66-5ubuntu2.1 [34.2 kB]
+Get:3 http://archive.ubuntu.com/ubuntu noble/main amd64 iputils-ping amd64 3:20240117-1build1 [44.3 kB]
+Get:4 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libpam-cap amd64 1:2.66-5ubuntu2.1 [12.4 kB]
+Fetched 121 kB in 0s (250 kB/s)  
+debconf: delaying package configuration, since apt-utils is not installed
+root@e4f29a590800:/# ping 172.18.0.2
+
+========================================================================================
+Now checking whether app-network having connectivity with db-network or not?
+========================================================================================
+
+
+[root@ip-172-31-29-100 ~]# docker exec -it app bash
+root@6753d02cae0d:/# apt update -y
+Get:1 http://security.ubuntu.com/ubuntu noble-security InRelease [126 kB]
+Get:2 http://security.ubuntu.com/ubuntu noble-security/universe amd64 Packages [1039 kB]
+Get:3 http://archive.ubuntu.com/ubuntu noble InRelease [256 kB]
+Get:4 http://security.ubuntu.com/ubuntu noble-security/restricted amd64 Packages [789 kB]
+Get:5 http://security.ubuntu.com/ubuntu noble-security/multiverse amd64 Packages [15.5 kB]
+Get:6 http://security.ubuntu.com/ubuntu noble-security/main amd64 Packages [777 kB]  
+Get:7 http://archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB]             
+Get:8 http://archive.ubuntu.com/ubuntu noble-backports InRelease [126 kB]
+Get:9 http://archive.ubuntu.com/ubuntu noble/multiverse amd64 Packages [331 kB]
+Get:10 http://archive.ubuntu.com/ubuntu noble/main amd64 Packages [1808 kB]
+Get:11 http://archive.ubuntu.com/ubuntu noble/universe amd64 Packages [19.3 MB]
+Get:12 http://archive.ubuntu.com/ubuntu noble/restricted amd64 Packages [117 kB]
+Get:13 http://archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 Packages [20.1 kB]
+Get:14 http://archive.ubuntu.com/ubuntu noble-updates/universe amd64 Packages [1315 kB]
+Get:15 http://archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Packages [804 kB]
+Get:16 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 Packages [1084 kB]
+Get:17 http://archive.ubuntu.com/ubuntu noble-backports/universe amd64 Packages [15.1 kB]
+Fetched 28.1 MB in 3s (8893 kB/s)                             
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+14 packages can be upgraded. Run 'apt list --upgradable' to see them.
+root@6753d02cae0d:/# apt install iputils-ping
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+The following additional packages will be installed:
+  libcap2 libcap2-bin libpam-cap
+The following NEW packages will be installed:
+  iputils-ping libcap2-bin libpam-cap
+The following packages will be upgraded:
+  libcap2
+1 upgraded, 3 newly installed, 0 to remove and 13 not upgraded.
+Need to get 121 kB of archives.
+After this operation, 319 kB of additional disk space will be used.
+Do you want to continue? [Y/n] Y
+Get:1 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libcap2 amd64 1:2.66-5ubuntu2.1 [30.1 kB]
+Get:2 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libcap2-bin amd64 1:2.66-5ubuntu2.1 [34.2 kB]
+Get:3 http://archive.ubuntu.com/ubuntu noble/main amd64 iputils-ping amd64 3:20240117-1build1 [44.3 kB]
+Get:4 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libpam-cap amd64 1:2.66-5ubuntu2.1 [12.4 kB]
+Fetched 121 kB in 0s (263 kB/s)  
+debconf: delaying package configuration, since apt-utils is not installed
+(Reading database ... 4383 files and directories currently installed.)
+Preparing to unpack .../libcap2_1%3a2.66-5ubuntu2.1_amd64.deb ...
+Unpacking libcap2:amd64 (1:2.66-5ubuntu2.1) over (1:2.66-5ubuntu2) ...
+Setting up libcap2:amd64 (1:2.66-5ubuntu2.1) ...
+Selecting previously unselected package libcap2-bin.
+(Reading database ... 4383 files and directories currently installed.)
+Preparing to unpack .../libcap2-bin_1%3a2.66-5ubuntu2.1_amd64.deb ...
+Unpacking libcap2-bin (1:2.66-5ubuntu2.1) ...
+Selecting previously unselected package iputils-ping.
+Preparing to unpack .../iputils-ping_3%3a20240117-1build1_amd64.deb ...
+Unpacking iputils-ping (3:20240117-1build1) ...
+Selecting previously unselected package libpam-cap:amd64.
+Preparing to unpack .../libpam-cap_1%3a2.66-5ubuntu2.1_amd64.deb ...
+Unpacking libpam-cap:amd64 (1:2.66-5ubuntu2.1) ...
+Setting up libcap2-bin (1:2.66-5ubuntu2.1) ...
+Setting up libpam-cap:amd64 (1:2.66-5ubuntu2.1) ...
+debconf: unable to initialize frontend: Dialog
+debconf: (No usable dialog-like program is installed, so the dialog based frontend cannot be used. at /usr/share/perl5/Debconf/FrontEnd/Dialog.pm line 79.)
+debconf: falling back to frontend: Readline
+debconf: unable to initialize frontend: Readline
+debconf: (Can't locate Term/ReadLine.pm in @INC (you may need to install the Term::ReadLine module) (@INC entries checked: /etc/perl /usr/local/lib/x86_64-linux-gnu/perl/5.38.2 /usr/local/share/perl/5.38.2 /usr/lib/x86_64-linux-gnu/perl5/5.38 /usr/share/perl5 /usr/lib/x86_64-linux-gnu/perl-base /usr/lib/x86_64-linux-gnu/perl/5.38 /usr/share/perl/5.38 /usr/local/lib/site_perl) at /usr/share/perl5/Debconf/FrontEnd/Readline.pm line 8.)
+debconf: falling back to frontend: Teletype
+Setting up iputils-ping (3:20240117-1build1) ...
+Processing triggers for libc-bin (2.39-0ubuntu8.3) ...
+root@6753d02cae0d:/# ping 172.19.0.2
+PING 172.19.0.2 (172.19.0.2) 56(84) bytes of data.
+
+
