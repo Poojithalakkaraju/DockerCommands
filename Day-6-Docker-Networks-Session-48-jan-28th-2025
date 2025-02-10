@@ -1,1 +1,9 @@
 
+[root@ip-172-31-29-100 ~]# docker run -itd --name cont3 ubuntu
+7d4e16dbfe659ace896090eb69bd61f34e1282ac3878ab2e7bb818f503fc1a94
+[root@ip-172-31-29-100 ~]# docker network ls
+NETWORK ID     NAME      DRIVER    SCOPE
+1b1fc84bbd05   bridge    bridge    local
+e6b48cdf97b0   host      host      local
+76d8fcab74fb   none      null      local
+[root@ip-172-31-29-100 ~]# docker inspect cont3
