@@ -20,3 +20,35 @@ b972ca9af6b8   ubuntu    "/bin/bash"   15 seconds ago   Up 14 seconds           
 a0931269c759   ubuntu    "/bin/bash"   3 minutes ago    Up 3 minutes              cont2
 aa541f6bf8b3   ubuntu    "/bin/bash"   35 minutes ago   Up 35 minutes             cont1
 [root@ip-172-31-29-100 ~]# docker inspect cont4
+"Networks": {
+                "none": {
+                    "IPAMConfig": null,
+                    "Links": null,
+                    "Aliases": null,
+                    "MacAddress": "",
+                    "NetworkID": "76d8fcab74fb755a7908b259d7b903c663b5e8a65106a9ded736dc5b6eb4618b",
+                    "EndpointID": "7a901fbc86add862b18c628fa52f8eaa88836b15c450b8e4cde924bc7ead7fd8",
+                    "Gateway": "",
+                    "IPAddress": "",
+                    "IPPrefixLen": 0,
+                    "IPv6Gateway": "",
+                    "GlobalIPv6Address": "",
+                    "GlobalIPv6PrefixLen": 0,
+                    "DriverOpts": null,
+                    "DNSNames": null
+                }
+=========================================================================================
+How to create custom network and steps for creating container under custom network
+=========================================================================================
+
+[root@ip-172-31-29-100 ~]# docker network create app-network
+8051e3ee057ccfc4a35c016fccaba0cf72dfa5cc60a27e1eda03ee4f284b835a
+[root@ip-172-31-29-100 ~]# docker network ls
+NETWORK ID     NAME          DRIVER    SCOPE
+8051e3ee057c   app-network   bridge    local
+1b1fc84bbd05   bridge        bridge    local
+e6b48cdf97b0   host          host      local
+76d8fcab74fb   none          null      local
+[root@ip-172-31-29-100 ~]# docker run -itd --name app --network app-network ubuntu
+6753d02cae0d3681ffb697069a03df0a62c57542c467e9bb5dc70eae1c49d63f
+[root@ip-172-31-29-100 ~]# docker inspect app
