@@ -15,3 +15,7 @@ https://docker77.hashnode.dev/dockerfiles-for-web-applications  -- Docker Web ap
 https://docker77.hashnode.dev/docker-volumes-with-real-time-examples --Docker Volumes (Session 46) 24th Jan 2025
 
 https://docker77.hashnode.dev/a-beginners-guide-to-docker-registry-what-why-and-how - Docker Registry (Session 47) 27th Jan 2025
+
+https://docker77.hashnode.dev/a-devops-engineers-journey-into-docker-networks-- (Session 48) 28th Jan 2025
+
+https://docker77.hashnode.dev/docker-compose-a-master-guide-with-real-time-examples  --(Session 49) 30th Jan 2025
