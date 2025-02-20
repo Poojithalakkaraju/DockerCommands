@@ -1,0 +1,107 @@
+Compose.yaml file
+
+version: "3"
+
+services:
+
+  instamart:
+
+    container_name: instamart
+
+    build: ./instamart
+
+    ports:
+
+      - "1111:80"
+
+    volumes:
+
+      - instamart_volume:/usr/share/nginx/html
+
+    networks:
+
+      - devops
+
+
+
+
+
+
+
+  dinein:
+
+    container_name: dinein
+
+    build: ./dinein
+
+    ports:
+
+      - "2222:80"
+
+    volumes:
+
+      - dinein_volume:/usr/share/nginx/html
+
+    networks:
+
+      - mustafa
+
+
+
+
+  fooddelivery:
+
+    container_name: food_delivery
+
+    build: ./fooddelivery
+
+    ports:
+
+      - "3333:80"
+
+    volumes:
+
+      - food_delivery:/usr/share/nginx/html
+
+
+
+
+  genie:
+
+    container_name: genie
+
+    build: ./genie
+
+    ports:
+
+      - "4444:80"
+
+    volumes:
+
+      - genie_volume:/usr/share/nginx/html
+
+
+
+
+volumes:
+
+  instamart_volume:
+
+  dinein_volume:
+
+  food_delivery:
+
+  genie_volume:
+
+
+
+
+networks:
+
+  devops:
+
+    driver: bridge
+
+  mustafa:
+
+    driver: bridge
