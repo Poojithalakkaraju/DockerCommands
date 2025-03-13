@@ -1,0 +1,181 @@
+[ec2-user@ip-172-31-19-80 ~]$ sudo -i
+[root@ip-172-31-19-80 ~]# yum install docker -y
+Loaded plugins: extras_suggestions, langpacks, priorities, update-motd
+Resolving Dependencies
+--> Running transaction check
+---> Package docker.x86_64 0:25.0.8-1.amzn2.0.1 will be installed
+--> Processing Dependency: containerd >= 1.3.2 for package: docker-25.0.8-1.amzn2.0.1.x86_64
+--> Processing Dependency: libcgroup >= 0.40.rc1-5.15 for package: docker-25.0.8-1.amzn2.0.1.x86_64
+--> Processing Dependency: runc >= 1.0.0 for package: docker-25.0.8-1.amzn2.0.1.x86_64
+--> Processing Dependency: pigz for package: docker-25.0.8-1.amzn2.0.1.x86_64
+--> Running transaction check
+---> Package containerd.x86_64 0:1.7.25-1.amzn2.0.1 will be installed
+---> Package libcgroup.x86_64 0:0.41-21.amzn2 will be installed
+---> Package pigz.x86_64 0:2.3.4-1.amzn2.0.1 will be installed
+---> Package runc.x86_64 0:1.2.4-1.amzn2 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+=======================================================================================================================================================================
+ Package                              Arch                             Version                                       Repository                                   Size
+=======================================================================================================================================================================
+Installing:
+ docker                               x86_64                           25.0.8-1.amzn2.0.1                            amzn2extra-docker                            45 M
+Installing for dependencies:
+ containerd                           x86_64                           1.7.25-1.amzn2.0.1                            amzn2extra-docker                            31 M
+ libcgroup                            x86_64                           0.41-21.amzn2                                 amzn2-core                                   66 k
+ pigz                                 x86_64                           2.3.4-1.amzn2.0.1                             amzn2-core                                   81 k
+ runc                                 x86_64                           1.2.4-1.amzn2                                 amzn2extra-docker                           3.4 M
+
+Transaction Summary
+=======================================================================================================================================================================
+Install  1 Package (+4 Dependent packages)
+
+Total download size: 79 M
+Installed size: 286 M
+Downloading packages:
+(1/5): libcgroup-0.41-21.amzn2.x86_64.rpm                                                                                                       |  66 kB  00:00:00     
+(2/5): pigz-2.3.4-1.amzn2.0.1.x86_64.rpm                                                                                                        |  81 kB  00:00:00     
+(3/5): containerd-1.7.25-1.amzn2.0.1.x86_64.rpm                                                                                                 |  31 MB  00:00:00     
+(4/5): runc-1.2.4-1.amzn2.x86_64.rpm                                                                                                            | 3.4 MB  00:00:00     
+(5/5): docker-25.0.8-1.amzn2.0.1.x86_64.rpm                                                                                                     |  45 MB  00:00:00     
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Total                                                                                                                                   82 MB/s |  79 MB  00:00:00     
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Installing : runc-1.2.4-1.amzn2.x86_64                                                                                                                           1/5 
+  Installing : containerd-1.7.25-1.amzn2.0.1.x86_64                                                                                                                2/5 
+  Installing : libcgroup-0.41-21.amzn2.x86_64                                                                                                                      3/5 
+  Installing : pigz-2.3.4-1.amzn2.0.1.x86_64                                                                                                                       4/5 
+  Installing : docker-25.0.8-1.amzn2.0.1.x86_64                                                                                                                    5/5 
+  Verifying  : runc-1.2.4-1.amzn2.x86_64                                                                                                                           1/5 
+  Verifying  : pigz-2.3.4-1.amzn2.0.1.x86_64                                                                                                                       2/5 
+  Verifying  : libcgroup-0.41-21.amzn2.x86_64                                                                                                                      3/5 
+  Verifying  : containerd-1.7.25-1.amzn2.0.1.x86_64                                                                                                                4/5 
+  Verifying  : docker-25.0.8-1.amzn2.0.1.x86_64                                                                                                                    5/5 
+
+Installed:
+  docker.x86_64 0:25.0.8-1.amzn2.0.1                                                                                                                                   
+
+Dependency Installed:
+  containerd.x86_64 0:1.7.25-1.amzn2.0.1         libcgroup.x86_64 0:0.41-21.amzn2         pigz.x86_64 0:2.3.4-1.amzn2.0.1         runc.x86_64 0:1.2.4-1.amzn2        
+
+Complete!
+[root@ip-172-31-19-80 ~]# sudo curl -L "https://github.com/docker/compose/releases/download/1.29.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+100 12.1M  100 12.1M    0     0  54.9M      0 --:--:-- --:--:-- --:--:--  119M
+[root@ip-172-31-19-80 ~]# ls /usr/local/bin/
+docker-compose
+[root@ip-172-31-19-80 ~]# sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+[root@ip-172-31-19-80 ~]# sudo chmod +x /usr/local/bin/docker-compose
+[root@ip-172-31-19-80 ~]# docker-compose version
+docker-compose version 1.29.1, build c34c88b2
+docker-py version: 5.0.0
+CPython version: 3.7.10
+OpenSSL version: OpenSSL 1.1.0l  10 Sep 2019
+[root@ip-172-31-19-80 ~]# yum install git -y
+Loaded plugins: extras_suggestions, langpacks, priorities, update-motd
+Resolving Dependencies
+--> Running transaction check
+---> Package git.x86_64 0:2.47.1-1.amzn2.0.2 will be installed
+--> Processing Dependency: git-core = 2.47.1-1.amzn2.0.2 for package: git-2.47.1-1.amzn2.0.2.x86_64
+--> Processing Dependency: git-core-doc = 2.47.1-1.amzn2.0.2 for package: git-2.47.1-1.amzn2.0.2.x86_64
+--> Processing Dependency: perl-Git = 2.47.1-1.amzn2.0.2 for package: git-2.47.1-1.amzn2.0.2.x86_64
+--> Processing Dependency: perl(Git) for package: git-2.47.1-1.amzn2.0.2.x86_64
+--> Processing Dependency: perl(Term::ReadKey) for package: git-2.47.1-1.amzn2.0.2.x86_64
+--> Running transaction check
+---> Package git-core.x86_64 0:2.47.1-1.amzn2.0.2 will be installed
+---> Package git-core-doc.noarch 0:2.47.1-1.amzn2.0.2 will be installed
+---> Package perl-Git.noarch 0:2.47.1-1.amzn2.0.2 will be installed
+--> Processing Dependency: perl(Error) for package: perl-Git-2.47.1-1.amzn2.0.2.noarch
+---> Package perl-TermReadKey.x86_64 0:2.30-20.amzn2.0.2 will be installed
+--> Running transaction check
+---> Package perl-Error.noarch 1:0.17020-2.amzn2 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+=======================================================================================================================================================================
+ Package                                    Arch                             Version                                        Repository                            Size
+=======================================================================================================================================================================
+Installing:
+ git                                        x86_64                           2.47.1-1.amzn2.0.2                             amzn2-core                            57 k
+Installing for dependencies:
+ git-core                                   x86_64                           2.47.1-1.amzn2.0.2                             amzn2-core                            11 M
+ git-core-doc                               noarch                           2.47.1-1.amzn2.0.2                             amzn2-core                           3.2 M
+ perl-Error                                 noarch                           1:0.17020-2.amzn2                              amzn2-core                            32 k
+ perl-Git                                   noarch                           2.47.1-1.amzn2.0.2                             amzn2-core                            44 k
+ perl-TermReadKey                           x86_64                           2.30-20.amzn2.0.2                              amzn2-core                            31 k
+
+Transaction Summary
+=======================================================================================================================================================================
+Install  1 Package (+5 Dependent packages)
+
+Total download size: 15 M
+Installed size: 47 M
+Downloading packages:
+(1/6): git-2.47.1-1.amzn2.0.2.x86_64.rpm                                                                                                        |  57 kB  00:00:00     
+(2/6): git-core-doc-2.47.1-1.amzn2.0.2.noarch.rpm                                                                                               | 3.2 MB  00:00:00     
+(3/6): perl-Error-0.17020-2.amzn2.noarch.rpm                                                                                                    |  32 kB  00:00:00     
+(4/6): git-core-2.47.1-1.amzn2.0.2.x86_64.rpm                                                                                                   |  11 MB  00:00:00     
+(5/6): perl-Git-2.47.1-1.amzn2.0.2.noarch.rpm                                                                                                   |  44 kB  00:00:00     
+(6/6): perl-TermReadKey-2.30-20.amzn2.0.2.x86_64.rpm                                                                                            |  31 kB  00:00:00     
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Total                                                                                                                                   55 MB/s |  15 MB  00:00:00     
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Installing : git-core-2.47.1-1.amzn2.0.2.x86_64                                                                                                                  1/6 
+  Installing : git-core-doc-2.47.1-1.amzn2.0.2.noarch                                                                                                              2/6 
+  Installing : 1:perl-Error-0.17020-2.amzn2.noarch                                                                                                                 3/6 
+  Installing : perl-TermReadKey-2.30-20.amzn2.0.2.x86_64                                                                                                           4/6 
+  Installing : perl-Git-2.47.1-1.amzn2.0.2.noarch                                                                                                                  5/6 
+  Installing : git-2.47.1-1.amzn2.0.2.x86_64                                                                                                                       6/6 
+  Verifying  : perl-TermReadKey-2.30-20.amzn2.0.2.x86_64                                                                                                           1/6 
+  Verifying  : perl-Git-2.47.1-1.amzn2.0.2.noarch                                                                                                                  2/6 
+  Verifying  : git-2.47.1-1.amzn2.0.2.x86_64                                                                                                                       3/6 
+  Verifying  : 1:perl-Error-0.17020-2.amzn2.noarch                                                                                                                 4/6 
+  Verifying  : git-core-doc-2.47.1-1.amzn2.0.2.noarch                                                                                                              5/6 
+  Verifying  : git-core-2.47.1-1.amzn2.0.2.x86_64                                                                                                                  6/6 
+
+Installed:
+  git.x86_64 0:2.47.1-1.amzn2.0.2                                                                                                                                      
+
+Dependency Installed:
+  git-core.x86_64 0:2.47.1-1.amzn2.0.2          git-core-doc.noarch 0:2.47.1-1.amzn2.0.2   perl-Error.noarch 1:0.17020-2.amzn2   perl-Git.noarch 0:2.47.1-1.amzn2.0.2  
+  perl-TermReadKey.x86_64 0:2.30-20.amzn2.0.2  
+
+Complete!
+[root@ip-172-31-19-80 ~]# git clone https://github.com/Poojithalakkaraju/nginx-reverse-proxy.git
+Cloning into 'nginx-reverse-proxy'...
+remote: Enumerating objects: 15, done.
+remote: Counting objects: 100% (15/15), done.
+remote: Compressing objects: 100% (9/9), done.
+remote: Total 15 (delta 1), reused 12 (delta 1), pack-reused 0 (from 0)
+Receiving objects: 100% (15/15), done.
+Resolving deltas: 100% (1/1), done.
+[root@ip-172-31-19-80 ~]# git checkout master
+fatal: not a git repository (or any of the parent directories): .git
+[root@ip-172-31-19-80 ~]# ll
+total 0
+drwxr-xr-x 3 root root 35 Mar 13 03:01 nginx-reverse-proxy
+[root@ip-172-31-19-80 ~]# cd nginx-reverse-proxy
+[root@ip-172-31-19-80 nginx-reverse-proxy]# ll
+total 4
+-rw-r--r-- 1 root root 21 Mar 13 03:01 README.md
+[root@ip-172-31-19-80 nginx-reverse-proxy]# git checkout master
+branch 'master' set up to track 'origin/master'.
+Switched to a new branch 'master'
+[root@ip-172-31-19-80 nginx-reverse-proxy]# ll
+total 8
+drwxr-xr-x 2 root root  42 Mar 13 03:02 bank
+-rw-r--r-- 1 root root 303 Mar 13 03:02 docker-compose.yml
+-rw-r--r-- 1 root root  96 Mar 13 03:02 Dockerfile
+drwxr-xr-x 2 root root  42 Mar 13 03:02 mobile
+drwxr-xr-x 2 root root  42 Mar 13 03:02 nginx
